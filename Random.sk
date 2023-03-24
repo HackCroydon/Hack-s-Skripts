@@ -1,0 +1,16 @@
+command /discord:
+    trigger:
+        send ""
+        send "&a[Your Server] Join Our Discord <link:Put Your Link Here>&e&lClick Me!"
+        send ""
+        play sound "Note_Block_pling" at volume 1 at pitch 1 to player
+
+command /announce <text>:
+    permission: op
+    trigger:
+        if arg-1 is set:
+            broadcast ""
+            broadcast "&a[Your Server] &f%arg-1%"
+            broadcast ""
+            send title "&a[Your Server]" with subtitle "&f%arg-1%" to all players
+            play sound "Note_Block_Pling" at volume 1 at pitch 1 to all players
