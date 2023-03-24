@@ -1,0 +1,31 @@
+command /ban <offline player> [<text>]:
+    permission: staff.ban
+    trigger:
+        if arg-1 is set:
+            if arg-2 is not set:
+                if {bans::%arg-1's uuid%} is not set:
+                    set {bans::%arg-1's uuid%} to 1
+                    execute player command "/litebans:tempban %arg-1% 7d [Unfair Advantages]"
+                if {bans::%arg-1's uuid%} = 1:
+                    add 1 to {bans::%arg-1's uuid%}
+                    execute player command "/litebans:tempban %arg-1% 14d [Unfair Advantages]"
+                if {bans::%arg-1's uuid%} = 3
+                    execute player command "/litebans:tempban %arg-1% 30d [Unfair Advantages]"
+                if {bans::%arg-1's uuid%} = 3:
+                    add 1 to {bans::%arg-1's uuid%}
+                    execute player command "/litebans:ban %arg-1% [Unfair Advantages]"
+                    delete {bans::%arg-1's uuid%}
+                if arg-2 is set:
+                    if {bans::%arg-1's uuid%} is not set:
+                        set {bans::%arg-1's uuid%} to 1
+                        execute player command "/litebans:tempban %arg-1% 7d %arg-2%"
+                    f {bans::%arg-1's uuid%} = 1:
+                        add 1 to {bans::%arg-1's uuid%}
+                        execute player command "/litebans:tempban %arg-1% 14d %arg-2%"
+                    if {bans::%arg-1's uuid%} = 2:
+                        add 1 to {bans::%arg-1's uuid%}
+                        execute player command "/litebans:tempban %arg-1% 30d %arg-2%"
+                    if {bans::%arg-1's uuid%} = 3:
+                        add 1 to {bans::%arg-1's uuid%}
+                        execute player command "/litebans:ban %arg-1% %arg-2%"
+                        delete {bans::%arg-1's uuid%}
