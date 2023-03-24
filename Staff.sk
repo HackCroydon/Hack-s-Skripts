@@ -1,0 +1,13 @@
+options:
+    BotName: put ur bot name here
+    BotToken: put ur bot token here
+    Channel: Put Channel id Here for the Channel u want it to say in
+    ServerName: Put Your Server Name Here!
+
+define new bot named "{@BotName}":
+    token: "{@BotToken}"
+
+
+on command:
+    if player has permission "staff.see" or "staff.*":
+        post "FearBoxx | %player% has ran %command%" to text channel with id "{@Channel}"
