@@ -1,0 +1,412 @@
+on load:
+    set {Gens::wheat} to a hay bale named "&e---- Hay Gen ----" with lore "&e---- Drops 1 Hay Every 10 Seconds ----" and "&e---- Sells For 10⛃ ----"
+    set {Gens::Coal} to a cole ore named "&e---- &8Cole Gen &e----" with lore "&e---- &8Drops 1 Cole Every 10 Seconds &e----" and "&e---- Sells For 25⛃ ----"
+    set {Gens::Copper} to a copper ore named "&e---- &6Copper Gen &e----" with "&e---- &6Drops 1 Raw Copper Every 10 Seconds &e----" and "&e---- Sells For 35⛃ ----"
+    set {Gens::Iron} to a iron ore named "&e---- &fIron Gen &e----" with "&e---- &fDrops 1 Iron Ingot Every 10 Seconds &e----" and "&e---- Sells For 45⛃ ----"
+    set {Gens::Gold} to a Gold ore named "&e---- &eGold Gen &e----" with "&e---- &eDrops 1 Gold Ingot Every 10 Seconds &e----" and "&e---- Sells For 60⛃ ----"
+    set {Gens::Diamond} to a Diamond ore named "&e---- &bDiamond Gen &e----" with "&e---- &bDrops 1 Diamond Every 10 Seconds &e----" and "&e---- Sells For 80⛃ ----"
+    set {Gens::Debris} to a Ancient Debris named "&e---- &x&8&8&3&b&0&9Debris Gen &e----" with "&e---- &bDrops 1 Ancient Debris Every 10 Seconds &e----" and "&e---- Sells For 100⛃ ----"
+    set {Items::Coal} to a cole named "&e---- &8Cole &e----" with lore "&e---- Sells For 25⛃ ----"
+    set {Items::Copper} to a raw copper named "&e---- &6Raw Copper &e----" with lore "&e---- Sells For 35⛃ ----"
+    set {Items::Iron} to a Iron Ingot named "&e---- &fIron Ingot &e----" with lore "&e---- Sells For 45⛃ ----"
+    set {Items::Gold} to a Gold Ingot named "&e---- &eGold Ingot &e----" with lore "&e---- Sells For 60⛃ ----"
+    set {Items::Diamond} to a Diamond named "&e---- &bDiamond &e----" with lore "&e---- Sells For 80⛃ ----"
+    set {Items::Debris} to a Ancient Debris named "&e---- &x&8&8&3&b&0&9Ancient Debris &e----" with lore "&e---- Sells For 100⛃ ----"
+    set {Gens::CoalBlock} to a cole block named "&e---- &8Cole Block Gen &e----" with lore "&e---- &8Drops 1 Cole Block Every 10 Seconds &e----" and "&e---- Sells For 25⛃ ----"
+    set {Gens::CopperBlock} to a waxed copper block named "&e---- &6Copper Block Gen &e----" with "&e---- &6Drops 1 Copper Block Every 10 Seconds &e----" and "&e---- Sells For 35⛃ ----"
+    set {Gens::IronBlock} to a iron block named "&e---- &fIron Block Gen &e----" with "&e---- &fDrops 1 Iron Block Every 10 Seconds &e----" and "&e---- Sells For 45⛃ ----"
+    set {Gens::GoldBlock} to a Gold block named "&e---- &eGold Block Gen &e----" with "&e---- &eDrops 1 Gold Block Every 10 Seconds &e----" and "&e---- Sells For 60⛃ ----"
+    set {Gens::DiamondBlock} to a Diamond block named "&e---- &bDiamond Block Gen &e----" with "&e---- &bDrops 1 Diamond Block Every 10 Seconds &e----" and "&e---- Sells For 80⛃ ----"
+    set {Gens::NetheriteBlock} to a netherite block named "&e---- &x&8&8&3&b&0&9Netherite Gen &e----" with "&e---- &bDrops 1 Netherite Ingot Every 10 Seconds &e----" and "&e---- Sells For 100⛃ ----"
+    set {Items::CoalBlock} to a cole Block named "&e---- &8Cole Block &e----" with lore "&e---- Sells For 125⛃ ----"
+    set {Items::CopperBlock} to a Copper Ingot named "&e---- &6Copper Block &e----" with lore "&e---- Sells For 135⛃ ----"
+    set {Items::IronBlock} to a Iron Block named "&e---- &fIron Block &e----" with lore "&e---- Sells For 145⛃ ----"
+    set {Items::GoldBlock} to a Gold Block named "&e---- &eGold Block &e----" with lore "&e---- Sells For 160⛃ ----"
+    set {Items::DiamondBlock} to a Diamond block named "&e---- &bDiamond &e----" with lore "&e---- Sells For 180⛃ ----"
+    set {Items::NetheriteBlock} to a netherite ingot named "&e---- &x&8&8&3&b&0&9Netherite Ingot &e----" with lore "&e---- Sells For 200⛃ ----"
+
+
+options:
+	shopname: &6&lShop
+	wname: &bWoods
+	genname: &b&lGens
+	tokname: &1&lToken
+	miscname: &2&lMiscellaneous
+	blockname: &3&lBlocks
+	armname: &5&lEquipment
+	msg: &8[&3Shop&8] &3
+
+command /givegen [<text>]:
+    permission: op
+    trigger:
+        if arg-1 is set:
+            give player {gens::%arg-1%}
+        else:
+            message "&cInvalid Arguments! Usage: /givegen <gen>"
+
+on place:
+    if player's tool is hay block:
+        placeGen("Wheat", player, event-block's location)
+    if player's tool is coal ore:
+        placeGen("Coal", player, event-block's location)
+    if player's tool is coppor ore:
+        placeGen("copper", player, event-block's location)
+    if player's tool is iron ore:
+        placeGen("iron", player, event-block's location)
+    if player's tool is gold ore:
+        placeGen("gold", player, event-block's location)
+    if player's tool is diamond ore:
+        placeGen("diamond", player, event-block's location)
+    if player's tool is ancient Debris:
+        placeGen("Debris", player, event-block's location)
+    if player's tool is coal block:
+        placeGen("coalblock", player, event-block's location)
+    if player's tool is block of copper:
+        placeGen("copperblock", player, event-block's location)
+    if player's tool is iron block:
+        placeGen("IronBlock", player, event-block's location)
+    if player's tool is gold block:
+        placeGen("GoldBlock", player, event-block's location)
+    if player's tool is diamond block:
+        placeGen("DiamondBlock", player, event-block's location)
+    if player's tool is netherite block:
+        placeGen("NetheriteBlock", player, event-block's location)
+
+on left click:
+    if event-block is hay block:
+        breakGen("Wheat", player, event-block's location)
+    if event-block is coal block:
+        breakGen("Coal", player, event-block's location)
+    if event-block is hay block:
+        breakGen("Wheat", player, event-block's location)
+    if event-block is coal ore:
+        breakGen("Coal", player, event-block's location)
+    if event-block is coppor ore:
+        breakGen("copper", player, event-block's location)
+    if event-block is iron ore:
+        breakGen("iron", player, event-block's location)
+    if event-block is gold ore:
+        breakGen("gold", player, event-block's location)
+    if event-block is diamond ore:
+        breakGen("diamond", player, event-block's location)
+    if event-block is ancient Debris:
+        breakGen("Debris", player, event-block's location)
+    if event-block is coal block:
+        breakGen("coalblock", player, event-block's location)
+    if event-block is block of copper:
+        breakGen("copperblock", player, event-block's location)
+    if event-block is iron block:
+        breakGen("IronBlock", player, event-block's location)
+    if event-block is gold block:
+        breakGen("GoldBlock", player, event-block's location)
+    if event-block is diamond block:
+        breakGen("DiamondBlock", player, event-block's location)
+    if event-block is netherite block:
+        breakGen("NetheriteBlock", player, event-block's location)
+
+function breakGen(n: text, p: player, l: location):
+    remove 1 from {usedslots::%{_p}'s uuid%}
+    remove {_l}'s location from {gensplaced::%{_n}%::%{_p}'s uuid%::*}
+    send action bar "&8* &7Picked up a &e%{_n}% Gen &7(&e%{usedslots::%{_p}'s uuid%}%&7/&e%{maxslots::%{_p}'s uuid%}%&7)" to {_p}
+    play sound "block.note_block.pling" at volume 1 at pitch 1 to {_p}
+    make 10 of poof at {_l}
+    give {_p} {gens::%{_n}%}
+    set block at {_l} to air
+
+every 2 seconds:
+    loop all players:
+        send action bar "&e%{coins::%loop-player's uuid%}%⛃   &7Gen Slots: &e%{usedslots::%loop-player's uuid%}%&7/&e%{maxslots::%loop-player's uuid%}%" to loop-player
+
+function placeGen(n: text, p: player, l: location):
+    if {usedslots::%{_p}'s uuid%} = {maxslots::%{_p}'s uuid%}:
+        send action bar "&8* &cGen cap reached! &7(&e%{usedslots::%{_p}'s uuid%}%&7/&e%{maxslots::%{_p}'s uuid%}%&7)" to {_p}
+        play sound "entity.villager.no" at volume 1 at pitch 1 to {_p}
+        set block at {_l} to air
+        give {_p} {gens::%{_n}%}
+    else:
+        add {_l}'s location to {gensplaced::%{_n}%::%{_p}'s uuid%::*}
+        add 1 to {usedslots::%{_p}'s uuid%}
+        send action bar "&8* &7Placed a &e%{_n}% Gen &7(&e%{usedslots::%{_p}'s uuid%}%&7/&e%{maxslots::%{_p}'s uuid%}%&7)" to {_p}
+        play sound "block.note_block.pling" at volume 1 at pitch 2 to {_p}
+ 
+        make 10 of poof at {_l}
+
+
+command /start:
+    trigger:
+        if {start::%player's uuid%} is not true:
+            set {start::%player's uuid%} to true
+            execute player command "/p auto"
+            give player {gens::Wheat}
+            wait 1 second
+            send title "&ePlace your gen to begin!" with subtitle " " to player for 3 seconds
+
+
+every 10 seconds:
+    loop all players:
+        loop all blocks in radius 30 around loop-player:
+            if {gensplaced::Wheat::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::wheat} 1 meters above {_loc} without velocity
+            if {gensplaced::Coal::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::coal} 1 meters above {_loc} without velocity
+            if {gensplaced::copper::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::copper} 1 meters above {_loc} without velocity
+            if {gensplaced::iron::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::iron} 1 meters above {_loc} without velocity
+            if {gensplaced::gold::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::gold} 1 meters above {_loc} without velocity
+            if {gensplaced::diamond::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::diamond} 1 meters above {_loc} without velocity
+            if {gensplaced::Debris::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::Debris} 1 meters above {_loc} without velocity
+            if {gensplaced::coalblock::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::coalblock} 1 meters above {_loc} without velocity
+            if {gensplaced::copperblock::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::copperblock} 1 meters above {_loc} without velocity
+            if {gensplaced::ironblock::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::ironblock} 1 meters above {_loc} without velocity
+            if {gensplaced::goldblock::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::goldblock} 1 meters above {_loc} without velocity
+            if {gensplaced::diamondblock::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::diamondblock} 1 meters above {_loc} without velocity
+            if {gensplaced::netheriteblock::%loop-player's uuid%::*} contains loop-block's location:
+                set {_loc} to block above loop-value-2
+                drop 1 of {items::NetheriteBlock} 1 meters above {_loc} without velocity
+
+on join:
+  toggle player's scoreboard to on
+  while player is online:
+    wait 2 ticks
+    set title of player's scoreboard to "&3Your&5Server &8● &d&lS1"
+    set line 15 of player's scoreboard to " "
+    set line 14 of player's scoreboard to " &a&lPLAYER"
+    set line 13 of player's scoreboard to " &8● &fGen Slots: %{usedslots::%{_p}'s uuid%}%/%{maxslots::%{_p}'s uuid%}%"
+    set line 12 of player's scoreboard to " &8● "&eCoins: %{coins::%player's uuid%}%"
+    set line 11 of player's scoreboard to " &8● &fRank: &3%vault-prefix%"
+    set line 10 of player's scoreboard to " &8● ""
+    set line 8 of player's scoreboard to " "
+    set line 7 of player's scoreboard to " &a&lSERVER"
+    set line 6 of player's scoreboard to " &8● &fJoins: &3%amount of {joins::*} ? 0%"
+    set line 5 of player's scoreboard to " &8● &fTPS: &3%first element of tps%"
+    set line 3 of player's scoreboard to " &8● &fOnline: &3%amount of players%/%max players%"
+    set line 2 of player's scoreboard to " "
+    set line 1 of player's scoreboard to "&7&oYourServer.minehut.gg"
+
+
+
+command /sell:
+    trigger:
+        set {_total} to 0
+        set {_wheatamt} to amount of wheat in player's inventory
+        remove all wheat from player's inventory
+        add {_wheatamt} * 10 to {_total}
+        set {_coalamt} to amount of coal in player's inventory
+        remove all coal from player's inventory
+        add {_coalamt} * 25 to {_total}
+        set {_copperamt} to amount of raw copper in player's inventory
+        remove all raw copper from player's inventory
+        add {_copperamt} * 35 to {_total}
+        set {_ironamt} to amount of raw iron in player's inventory
+        remove all raw iron from player's inventory
+        add {_ironamt} * 45 to {_total}
+        set {_goldamt} to the amount of raw gold in player's inventory
+        remove all raw gold from player's inventory
+        add {_goldamt} * 65 to {_total}
+        set {_diamondamt} to the amount of diamonds in player's inventory
+        remove all diamonds from player's inventory
+        add {_diamondamt} * 80 to {_total}
+        set {_netheriteamt} to the amount of ancient debris in player's inventory
+        remove all ancient debris from player's inventory
+        add {_netheriteamt} * 100 to {_total}
+        set {_coalbamt} to the amount of coal blocks in player's inventory
+        remove all coal blocks from player's inventory
+        add {_coalbamt} * 125 to {_total}
+        set {_copperbamt} to amount of copper blocks in player's inventory
+        remove all copper blocks from player's inventory
+        add {_copperbamt} * 135 to {_total}
+        set {_ironbamt} to amount of iron blocks in player's inventory
+        remove all iron blocks from player's inventory
+        add {_ironbamt} * 145 to {_total}
+        set {_goldbamt} to the amount of gold blocks in player's inventory
+        remove all gold blocks from player's inventory
+        add {_goldbamt} * 165 to {_total}
+        set {_diamondbamt} to the amount of diamond blocks in player's inventory
+        remove all diamond blocks from player's inventory
+        add {_diamondbamt} * 180 to {_total}
+        set {_netheritebamt} to the amount of netherite ingots in player's inventory
+        remove all netherite ingots from player's inventory
+        set {_total2} to the amount of wheat,coal,raw copper,raw iron,raw gold,diamonds,ancient debris,coal blocks,copper blocks,iron blocks, gold blocks, diamond blocks, netherite ingots in player's inventory
+        add {_netheritbeamt} * 200 to {_total}
+        send "&c&l--------&a&lSale Summary&c&l--------"
+        send "&e⛃ Earned: &e⛃&e&l%{_total}%"
+        send "&eAmount Of items sold: &e&l%{_total2}%"
+        play sound "entity.horse.armor" at volume 3 at pitch 1 to player
+        add {_total} to {coins::%player's uuid%}
+        add {_total2} to {totalsold::%player's uuid%}
+
+command /pay <player> <number>:
+    trigger:
+        if {coins::%player's uuid%} > arg-2
+            add arg-2 to {coins::%arg-1's uuid%}
+        if {coins::%player's uuid%} < arg-2
+            send "&cNot Enough Coins"
+
+command /eco <player> <number>:
+    permission: op
+    trigger:
+        add arg-2 to {coins::%arg-1's uuid%}
+        send "&eYou have Added %arg-2%⛃ to %arg-1%'s Bank Account"
+
+
+
+
+function buyMoney(p: player, i: integer, m: string, it: itemtype):
+	set {_uuid} to uuid of {_p}
+	if {balance::%{_uuid}%} >= {_i}:
+		remove {_i} from {balance::%{_uuid}%}
+		give {_p} {_it} named {_m}
+		send "{@msg}Bought 1 %{_m}% &3for $%{_i}%" to {_p}
+	else:
+		send "{@msg}Too poor" to {_p}
+
+function buyTokens(p: player, i: integer, m: string, it: itemtype):
+	set {_uuid} to uuid of {_p}
+	if {tokens::%{_uuid}%} >= {_i}:
+		remove {_i} from {tokens::%{_uuid}%}
+		give {_p} {_it} named {_m}
+		send "{@msg}Bought 1 %{_m}% &3for %{_i}% &3tokens" to {_p}
+	else:
+		send "{@msg}Too poor" to {_p}
+
+command /shop:
+	trigger:
+		set metadata tag "shop" of player to chest inventory with 3 row named "{@shopname}"
+		set slot 10 of metadata tag "shop" of player to oak log named "{@wname}"
+		set slot 11 of metadata tag "shop" of player to hay bale named "{@genname}""
+		set slot 12 of metadata tag "shop" of player to magma cream named "{@tokname}"
+		set slot 13 of metadata tag "shop" of player to rose bush named "{@miscname}"
+		set slot 14 of metadata tag "shop" of player to grass block named "{@blockname}"
+		set slot 15 of metadata tag "shop" of player to diamond sword named "{@armname}"
+		open (metadata tag "shop" of player) to player
+
+on inventory click:
+	if event-inventory = (metadata tag "shop" of player):
+		cancel event
+		if index of event-slot is 10:
+			set metadata tag "shopWood" of player to chest inventory with 6 rows named "{@wname}"
+			set slot 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 46, 47, 48, 49, 50, 51, 52 and 53 of metadata tag "shopWood" of player to black stained glass pane
+			set slot 10 of metadata tag "shopWood" of player to oak log named "&bOak Logs (16x)" with lore "", "&aPrice: $1k" and ""
+			set slot 11 of metadata tag "shopWood" of player to spruce log named "&bSpruce Logs (16x)" with lore "", "&aPrice: $1k" and ""
+			set slot 12 of metadata tag "shopWood" of player to jungle log named "&bJungle Logs (16x)" with lore "", "&aPrice: $1k" and ""
+			set slot 13 of metadata tag "shopWood" of player to Acacia log named "&bAcacia Logs (16x)" with lore "", "&aPrice: $1k" and ""
+			set slot 14 of metadata tag "shopWood" of player to birch log named "&bBirch Logs (16x)" with lore "", "&aPrice: $1k" and ""
+			set slot 45 of metadata tag "shopWood" of player to barrier named "&c&lBack"
+			open (metadata tag "shopWood" of player) to player
+		if index of event-slot is 11:
+			set metadata tag "shopGen" of player to chest inventory with 6 rows named "{@genname}"
+			set slot 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 46, 47, 48, 49, 50, 51, 52 and 53 of metadata tag "shopGen" of player to black stained glass pane
+			set slot 10 of metadata tag "shopGen" of player to hay bale named "&e---- Hay Gen ----" with lore "&e---- Drops 1 Hay Every 10 Seconds ----" and "&e---- Sells For 10⛃ ----" and "&fPrice: &a100$"
+			set slot 45 of metadata tag "shopGen" of player to barrier named "&c&lBack"
+			open (metadata tag "shopGen" of player) to player
+		if index of event-slot is 12:
+			set metadata tag "shopMisc" of player to chest inventory with 6 rows named "{@miscname}"
+			set slot 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 46, 47, 48, 49, 50, 51, 52 and 53 of metadata tag "shopMisc" of player to black stained glass pane
+			set slot 10 of metadata tag "shopMisc" of player to chest with lore "", "&aPrice: $500" and ""
+			set slot 11 of metadata tag "shopMisc" of player to water bucket with lore "", "&aPrice: $100" and ""
+			set slot 12 of metadata tag "shopMisc" of player to hopper with lore "", "&aPrice: $5k" and ""
+			set slot 13 of metadata tag "shopMisc" of player to torch with lore "", "&aPrice: $10" and ""
+			set slot 14 of metadata tag "shopMisc" of player to oak sign with lore "", "&aPrice: $50" and ""
+			set slot 15 of metadata tag "shopMisc" of player to ladder with lore "", "&aPrice: $50" and ""
+			set slot 45 of metadata tag "shopMisc" of player to barrier named "&c&lBack"
+			open (metadata tag "shopMisc" of player) to player
+		if index of event-slot is 13:
+			set metadata tag "shopBlock" of player to chest inventory with 6 rows named "{@blockname}"
+			set slot 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 46, 47, 48, 49, 50, 51, 52 and 53 of metadata tag "shopBlock" of player to black stained glass pane
+			set slot 10 of metadata tag "shopBlock" of player to sandstone with lore "", "&aPrice: $10" and ""
+			set slot 11 of metadata tag "shopBlock" of player to cobblestone with lore "", "&aPrice: $10" and ""
+			set slot 12 of metadata tag "shopBlock" of player to glass with lore "", "&aPrice: $10" and ""
+			set slot 13 of metadata tag "shopBlock" of player to stone with lore "", "&aPrice: $10" and ""
+			set slot 14 of metadata tag "shopBlock" of player to sand with lore "", "&aPrice: $10" and ""
+			set slot 15 of metadata tag "shopBlock" of player to ice with lore "", "&aPrice: $10" and ""
+			set slot 16 of metadata tag "shopBlock" of player to soul sand with lore "", "&aPrice: $10" and ""
+			set slot 45 of metadata tag "shopBlock" of player to barrier named "&c&lBack"
+			open (metadata tag "shopBlock" of player) to player
+		if index of event-slot is 14:
+    if event-inventory = (metadata tag "shopWood" of player):
+		cancel event
+		if index of event-slot is 10:
+			buyMoney(player, 16, "&fOak Wood", oak log)
+		if index of event-slot is 11:
+			buyMoney(player, 16, "&fSpruce Log", spruce log)
+		if index of event-slot is 12:
+			buyMoney(player, 16, "&fJungle Log", Jungle Log)
+		if index of event-slot is 13:
+			buyMoney(player, 16, "&fAcacia Log", Acacia log)
+		if index of event-slot is 14:
+			buyMoney(player, 16, "&fBirch Log", Birch Log)
+		if index of event-slot is 45:
+			open (metadata tag "shop" of player) to player
+	if event-inventory = (metadata tag "shopGen" of player):
+		cancel event
+		if index of event-slot is 10:
+			buyMoney(player, 100, "&e---- Hay Gen ----" with lore "&e---- Drops 1 Hay Every 10 Seconds ----" and "&e---- Sells For 10⛃ ----", hay bale)
+		if index of event-slot is 45:
+			open (metadata tag "shop" of player) to player
+	if event-inventory = (metadata tag "shopMisc" of player):
+		cancel event
+		if index of event-slot is 10:
+			buyMoney(player, 500, "&fChest", chest)
+		if index of event-slot is 11:
+			buyMoney(player, 100, "&fWater Bucket", water bucket)
+		if index of event-slot is 12:
+			buyMoney(player, 5000, "&fHopper", hopper)
+		if index of event-slot is 13:
+			buyMoney(player, 10, "&fTorch", torch)
+		if index of event-slot is 14:
+			buyMoney(player, 50, "&fOak Sign", oak sign)
+		if index of event-slot is 15:
+			buyMoney(player, 50, "&fLadder", ladder)
+		if index of event-slot is 45:
+			open (metadata tag "shop" of player) to player
+	if event-inventory = (metadata tag "shopBlock" of player):
+		cancel event
+		if index of event-slot is 10:
+			buyMoney(player, 10, "&fSandstone", sandstone)
+		if index of event-slot is 11:
+			buyMoney(player, 10, "&fCobblestone", cobblestone)
+		if index of event-slot is 12:
+			buyMoney(player, 10, "&fGlass", glass)
+		if index of event-slot is 13:
+			buyMoney(player, 10, "&fStone", stone)
+		if index of event-slot is 14:
+			buyMoney(player, 10, "&fSand", sand)
+		if index of event-slot is 15:
+			buyMoney(player, 10, "&fIce", ice)
+		if index of event-slot is 16:
+			buyMoney(player, 10, "&fSoul Sand", soul sand)
+		if index of event-slot is 45:
+			open (metadata tag "shop" of player) to player
+
+
+on join:
+    add 1 to {joins::*}
+    set {upgradeclick::%player's uuid%} to false
+    if {coins::%player's uuid%} is not set:
+        set {coins::%player's uuid%} to 0
+    if {usedslots::%player's uuid%} is not set:
+        set {usedslots::%player's uuid%} to 0
+    if {maxslots::%player's uuid%} is not set:
+        set {maxslots::%player's uuid%} to 10
+    
